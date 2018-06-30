@@ -5,6 +5,8 @@ import BootstrapVue from "bootstrap-vue"
 import App from './App'
 import router from './router'
 import store from './store'
+import API from './services/api'
+import config from '../config/prod.env'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -15,11 +17,16 @@ Vue.mixin(
   {
     data() {
       return {
-
+        API: API,
       }
     },
     computed: {
-
+      getResPrefix() {
+        return config.RES_URL ? config.RES_URL : '';
+      },
+      showConsole() {
+        return config.show_console;
+      }
     },
     methods: {
       switchPreLoader(state) {
