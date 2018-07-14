@@ -53,7 +53,15 @@
         }
       }
     },
+    created() {
+      this.calculateHeight();
+      window.addEventListener("resize", this.calculateHeight);
+    },
     methods: {
+      calculateHeight() {
+        let height = window.innerHeight;
+        this.$store.commit("setHeight", height);
+      },
       switchPreLoader(state) {
         this.show_preloader = state;
       },
