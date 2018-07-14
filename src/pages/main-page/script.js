@@ -85,7 +85,7 @@ export default {
         let y = evt.y - boundary.top;
 
         this.car.x = x - (this.car.width / 2);
-        this.car.y = y - (this.car.height / 2);
+        this.car.y = y - (this.car.height / 2); ///
       }
     }
   }
