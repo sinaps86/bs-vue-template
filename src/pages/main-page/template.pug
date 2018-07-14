@@ -1,10 +1,15 @@
 .main-page
   .map-container(
-    ref="ref_map_container"
-    @mousemove=""
-    @mousedown="mouseDown"
+  ref="ref_map_container"
+  @mousemove="carMove"
+  @mousedown="mouseDown"
   )
     .trafic-lights(
-      v-for="light in trafic_lights"
-      :style="[{'top': light.y + 'px'}, {'left': light.x + 'px'}, {'background-image': getLightState(light.state)}]"
+    v-for="light in trafic_lights"
+    :style="[{'top': light.y + 'px'}, {'left': light.x + 'px'}, {'background-image': getLightState(light.state)}]"
+    )
+    .car(
+    :style="[{'top': car.y + 'px'}, {'left': car.x + 'px'}]"
+    @mousedown="carHold"
+    @mouseup="carLeave"
     )
