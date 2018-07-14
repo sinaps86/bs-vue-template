@@ -34,4 +34,17 @@
     background: yellow;
     cursor: pointer;
   }
+  .test{
+    position: absolute;
+    z-index: 11;
+    border-radius: 48px;
+    background: rgba(12,250,12,0.5);
+  }
+  .light-center, .car-center {
+    position: absolute;
+    z-index: 13;
+    width: 1px;
+    height: 1px;
+    background: purple;
+  }
 }

@@ -6,10 +6,12 @@
   )
     .trafic-lights(
     v-for="light in trafic_lights"
-    :style="[{'top': light.y + 'px'}, {'left': light.x + 'px'}, {'background-image': getLightState(light.state)}]"
+    :style="[{'top': (light.y - light.height/2) + 'px'}, {'left': (light.x - light.width/2) + 'px'}, {'width': trafic_lights.width + 'px'}, {'height': trafic_lights.height + 'px'}, {'background-image': getLightState(light.state)}]"
     )
     .car(
     :style="[{'top': car.y + 'px'}, {'left': car.x + 'px'}]"
     @mousedown="carHold"
     @mouseup="carLeave"
     )
+
+
