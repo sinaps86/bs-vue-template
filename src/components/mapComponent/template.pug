@@ -1,0 +1,18 @@
+.new-component
+  GmapMap(
+  :center="{lat: 53.7557000, lng: 87.1099000}"
+  :zoom="15"
+  map-type-id="terrain"
+  :icon="{url:'http://images.clipartpanda.com/google-map-icon-pin-map-icon-614x460.png'}"
+  v-bind:style="{ width: getMapSize.mWidth + 'px', height: getMapSize.mHeight + 'px'}"
+  )
+    GmapMarker(
+      :key="index"
+      v-for="(m, index) in markers"
+      :position="m.position"
+      :clickable="true"
+      :draggable="false"
+      v-bind:icon="m.markerStatus === 1 ? red : m.markerStatus === 2 ? orange : m.markerStatus === 3 ? yellow : false"
+      v-bind:title="m.title"
+      )
+

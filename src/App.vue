@@ -61,7 +61,10 @@
         this.modals[type].title = title;
         this.modals[type].message = message;
         this.$refs["ref_m_app_" + type].show();
-      }
+      },
+      mapInit(){
+        AIzaSyBGo4Y3QpOgaYLO8Yu_n0zyuzteN12rs1c
+      },
     }
   }
 </script>
