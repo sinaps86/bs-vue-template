@@ -18,7 +18,6 @@ export default {
         {x: 862, y: 23, radius: 50, state: "red"},
         {x: 888, y: 384, radius: 50, state: "red"},
         {x: 866, y: 517, radius: 50, state: "red"},
-
         {x: 573, y: 396, radius: 50, state: "red"},
         {x: 988, y: 387, radius: 50, state: "red"},
         {x: 988, y: 386, radius: 50, state: "red"},
@@ -46,6 +45,16 @@ export default {
       let y = evt.y - boundary.top;
       console.log("X", x);
       console.log("Y", y);
+    },
+    getLightState(state) {
+      switch(state) {
+        case "red":
+          return `url("${require("../../assets/images/traffic-light-red.svg")}")`;
+        case "green":
+          return `url("${require("../../assets/images/traffic-light-green.svg")}")`;
+        case "yellow":
+          return `url("${require("../../assets/images/traffic-light-yellow.svg")}")`;
+      }
     }
   }
 }

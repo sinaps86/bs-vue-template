@@ -6,5 +6,5 @@
   )
     .trafic-lights(
       v-for="light in trafic_lights"
-      :style="[{'top': light.y + 'px'}, {'left': light.x + 'px'}]"
+      :style="[{'top': light.y + 'px'}, {'left': light.x + 'px'}, {'background-image': getLightState(light.state)}]"
     )
