@@ -18,6 +18,18 @@ export default {
         {x: 862, y: 23, radius: 50, state: "red"},
         {x: 888, y: 384, radius: 50, state: "red"},
         {x: 866, y: 517, radius: 50, state: "red"},
+
+        {x: 573, y: 396, radius: 50, state: "red"},
+        {x: 988, y: 387, radius: 50, state: "red"},
+        {x: 988, y: 386, radius: 50, state: "red"},
+        {x: 1003, y: 334, radius: 50, state: "red"},
+        {x: 1076, y: 274, radius: 50, state: "red"},
+        {x: 952, y: 606, radius: 50, state: "red"},
+        {x: 974, y: 68, radius: 50, state: "red"},
+        {x: 875, y: 62, radius: 50, state: "red"},
+        {x: 1169, y: 351, radius: 50, state: "red"},
+        {x: 1180, y: 258, radius: 50, state: "red"},
+        {x: 1258, y: 269, radius: 50, state: "red"},
       ],
     }
   },

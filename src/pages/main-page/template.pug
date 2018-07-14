@@ -4,3 +4,7 @@
     @mousemove=""
     @mousedown="mouseDown"
   )
+    .trafic-lights(
+      v-for="light in trafic_lights"
+      :style="[{'top': light.y + 'px'}, {'left': light.x + 'px'}]"
+    )
