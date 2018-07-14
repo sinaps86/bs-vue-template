@@ -3,6 +3,7 @@
   ref="ref_map_container"
   @mousemove="carMove"
   @mousedown="mouseDown"
+  @mouseleave="carLeave"
   )
     .trafic-lights(
     v-for="light in trafic_lights"
@@ -13,5 +14,5 @@
     @mousedown="carHold"
     @mouseup="carLeave"
     )
-
+    .timer {{time.toFixed(1)}}
 
