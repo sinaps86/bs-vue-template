@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
+import axios from 'axios'
+
 
 
 Vue.use(VueGoogleMaps, {
@@ -24,56 +26,12 @@ export default {
       yellow: require('../../assets/yellow-icon.svg'),
       defaultIconSettings: {},
       markers: [
-        {
-          position: {lat: 53.7557000, lng: 87.1099000},
-          markerStatus: 1,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.7556000, lng: 87.2099000},
-          markerStatus: 2,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.857000, lng: 86.1099000},
-          markerStatus: 3,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.7557002, lng: 87.1099002},
-          markerStatus: 1,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.7556002, lng: 87.2099002},
-          markerStatus: 2,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.857002, lng: 86.1099002},
-          markerStatus: 3,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.7557004, lng: 87.1099004},
-          markerStatus: 1,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.7556004, lng: 87.2099004},
-          markerStatus: 2,
-          title: 'Hello World!',
-        },
-        {
-          position: {lat: 53.857004, lng: 86.1099004},
-          markerStatus: 3,
-          title: 'Hello World!',
-        },
       ]
     }
   },
   created() {
-
+    this.getData();
+    console.log(VueGoogleMaps)
   },
 
   mounted () {
@@ -95,5 +53,27 @@ export default {
 
   methods: {
 
+    openWindow1(m, index){
+      m.opened = true;
+      console.log(this.GmapInfoWindow)
+    },
+
+     getData(){
+  axios.get('http://192.168.88.229:8000/api/area/micro_area')
+    .then(
+      response => {
+        for(let item in response.data){
+          let titleOut = response.data[item].level === 3 ? "Огромная яма" : response.data[item].level === 2 ? "Большая яма" : response.data[item].level === 1 ? "Крупная яма" : "";
+          this.markers.push({
+            position: {lat: response.data[item].latitude_left, lng: response.data[item].longitude_left},
+            markerStatus: response.data[item].level,
+            title: titleOut,})
+        }
+      },
+    )
+    .catch((e)=>{
+
+    })
+}
   }
 }

@@ -7,12 +7,15 @@
   v-bind:style="{ width: getMapSize.mWidth + 'px', height: getMapSize.mHeight + 'px'}"
   )
     GmapMarker(
+      ref="marker"
       :key="index"
       v-for="(m, index) in markers"
       :position="m.position"
       :clickable="true"
       :draggable="false"
-      v-bind:icon="m.markerStatus === 1 ? red : m.markerStatus === 2 ? orange : m.markerStatus === 3 ? yellow : false"
+      v-bind:icon="m.markerStatus === 3 ? red : m.markerStatus === 2 ? orange : m.markerStatus === 1 ? yellow : false"
       v-bind:title="m.title"
+      v-on:click="openWindow1(m, index)"
       )
+         GmapInfoWindow( )
 
