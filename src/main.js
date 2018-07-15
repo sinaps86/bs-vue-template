@@ -36,6 +36,9 @@ Vue.mixin(
       showAppModal(type, title, message) {
         let root = this.$root.$children[0];
         root && root.showAppModal(type, title, message);
+      },
+      log(message, ...param) {
+        this.showConsole && console.log(message, ...param)
       }
     }
   }

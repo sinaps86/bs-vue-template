@@ -8,7 +8,7 @@ export default {
       global_timer: "",
       track_timer: "",
       track_time: "",
-      speed_vector: 0,
+      summary_vector: 0,
       scale: 0.005564971,
       car: {
         width: 20, height: 20, x: 900, y: 488, hold: false, speed: 0
@@ -47,14 +47,14 @@ export default {
           green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 776, y: 567, width: 10, height: 20, radius: 70, state: "yellow",
-          green_interval: 10, yellow_interval: 2000, red_interval: 10,
-          red_timer: "", yellow_timer: "", green_timer: ""},
+          green_interval: 1000, yellow_interval: 1000, red_interval: 1000, black_out_interval: 1000,
+          red_timer: "", yellow_timer: "", green_timer: "", black_out_timer: ""},
         {x: 794, y: 565, width: 10, height: 20, radius: 70, state: "yellow",
-          green_interval: 10, yellow_interval: 2000, red_interval: 10,
-          red_timer: "", yellow_timer: "", green_timer: ""},
+          green_interval: 1000, yellow_interval: 1000, red_interval: 1000, black_out_interval: 1000,
+          red_timer: "", yellow_timer: "", green_timer: "", black_out_timer: ""},
         {x: 808, y: 582, width: 10, height: 20, radius: 70, state: "yellow",
-          green_interval: 10, yellow_interval: 2000, red_interval: 10,
-          red_timer: "", yellow_timer: "", green_timer: ""},
+          green_interval: 1000, yellow_interval: 1000, red_interval: 1000, black_out_interval: 1000,
+          red_timer: "", yellow_timer: "", green_timer: "", black_out_timer: ""},
         {x: 862, y: 23, width: 10, height: 20, radius: 70, state: "green",
           green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
@@ -62,7 +62,7 @@ export default {
           green_interval: 10000, yellow_interval: 2000, red_interval: 10000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 866, y: 517, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 5000,
+          green_interval: 7000, yellow_interval: 2000, red_interval: 7000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 573, y: 396, width: 10, height: 20, radius: 70, state: "green",
           green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
@@ -74,7 +74,7 @@ export default {
           green_interval: 10000, yellow_interval: 1000, red_interval: 10000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 1003, y: 334, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 7000,
+          green_interval: 2000, yellow_interval: 2000, red_interval: 7000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 1076, y: 274, width: 10, height: 20, radius: 70, state: "green",
           green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
@@ -134,11 +134,15 @@ export default {
     },
 
     calculateSpeed() {
-      this.car.speed = this.speed_vector * this.scale / (this.track_time / 3600);
+      //this.showConsole && console.log();
+      //this.log("Расстояние", (this.summary_vector* this.scale));
+      //this.log("Время", (this.track_time));
+      let speed = (this.summary_vector * this.scale) / (this.track_time / 3600);
+      this.car.speed = speed && isFinite(speed) ? speed : 0;
     },
 
     calcuateVector(cat_a, cat_b) {
-      this.speed_vector += Math.hypot(cat_a, cat_b);
+      this.summary_vector += Math.hypot(cat_a, cat_b);
     },
 
     changeLight(light, state) {
@@ -161,6 +165,14 @@ export default {
           light.state = "red";
           light.green_timer = setTimeout(self.changeLight, light.green_interval, light, "red");
           break;
+        case "third_yellow":
+          light.state = "black_out";
+          light.black_out_timer = setTimeout(self.changeLight, light.black_out_interval, light, "black_out");
+          break;
+        case "black_out":
+          light.state = "third_yellow";
+          light.yellow_timer = setTimeout(self.changeLight, light.yellow_interval, light, "third_yellow");
+          break;
       }
     },
     mouseDown(evt) {
@@ -181,6 +193,8 @@ export default {
           return `url("${require("../../assets/images/traffic-light-yellow.svg")}")`;
         case "second_yellow":
           return `url("${require("../../assets/images/traffic-light-yellow.svg")}")`;
+        case "black_out":
+          return `url("${require("../../assets/images/traffic-light-black.svg")}")`;
       }
     },
 
@@ -196,7 +210,7 @@ export default {
     carLeave() {
       this.car.hold = false;
       this.car.speed = 0;
-      this.speed_vector = 0;
+      this.summary_vector = 0;
       clearInterval(this.track_timer);
       this.track_time = 0;
     },
