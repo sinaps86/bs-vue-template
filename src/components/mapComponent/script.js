@@ -35,7 +35,7 @@ export default {
   },
 
   mounted () {
-
+    this.getMarkers()
   },
 
   computed:{
@@ -53,27 +53,37 @@ export default {
 
   methods: {
 
+    getMarkers() {
+      axios.get('http://192.168.88.229:8000/api/area/micro_area/')
+        .then(
+          response => {
+            console.log(response.data);
+            for(let item in response.data){
+              let titleOut = response.data[item].level === 3 ? "Огромная яма" : response.data[item].level === 2 ? "Большая яма" : response.data[item].level === 1 ? "Крупная яма" : "";
+              this.markers.push({
+                position: {lat: response.data[item].latitude_left, lng: response.data[item].longitude_left},
+                markerStatus: response.data[item].level,
+                title: titleOut,})
+            }
+          },
+        )
+        .catch((e)=>{
+
+        })
+    },
+
     openWindow1(m, index){
       m.opened = true;
       console.log(this.GmapInfoWindow)
     },
 
      getData(){
-  axios.get('http://192.168.88.229:8000/api/area/micro_area')
-    .then(
-      response => {
-        for(let item in response.data){
-          let titleOut = response.data[item].level === 3 ? "Огромная яма" : response.data[item].level === 2 ? "Большая яма" : response.data[item].level === 1 ? "Крупная яма" : "";
-          this.markers.push({
-            position: {lat: response.data[item].latitude_left, lng: response.data[item].longitude_left},
-            markerStatus: response.data[item].level,
-            title: titleOut,})
-        }
-      },
-    )
-    .catch((e)=>{
+      let self = this;
+     setInterval(
+       this.getMarkers(), 5000
+     )
 
-    })
+
 }
   }
 }
