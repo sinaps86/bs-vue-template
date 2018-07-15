@@ -6,8 +6,12 @@ export default {
     return {
       time: 0,
       global_timer: "",
+      track_timer: "",
+      track_time: "",
+      speed_vector: 0,
+      scale: 0.005564971,
       car: {
-        width: 20, height: 20, x: 900, y: 488, hold: false
+        width: 20, height: 20, x: 900, y: 488, hold: false, speed: 0
       },
       car_container: {
         width: 48, height: 48, x: 884, y: 472, hold: false
@@ -115,10 +119,20 @@ export default {
     },
     globalTick() {
       this.time += 0.1;
+      this.car.hold && this.calculateSpeed();
     },
+
+    calculateSpeed() {
+      this.car.speed = this.speed_vector * this.scale / (this.track_time / 3600);
+    },
+
+    calcuateVector(cat_a, cat_b) {
+      this.speed_vector += Math.hypot(cat_a, cat_b);
+    },
+
     changeLight(light, state) {
       let self = this;
-      this.showConsole && console.log("Change light", light, state);
+      //this.showConsole && console.log("Change light", light, state);
       switch(state) {
         case "red":
           light.state = "yellow";
@@ -141,6 +155,7 @@ export default {
       console.log("X", x);
       console.log("Y", y);
     },
+
     getLightState(state) {
       switch(state) {
         case "red":
@@ -151,14 +166,26 @@ export default {
           return `url("${require("../../assets/images/traffic-light-yellow.svg")}")`;
       }
     },
+
+    trackTiming() {
+      this.track_time += 0.1;
+    },
+
     carHold() {
+      let self = this;
       this.car.hold = true;
+      this.track_timer = setInterval(self.trackTiming, 100);
     },
     carLeave() {
       this.car.hold = false;
+      this.car.speed = 0;
+      this.speed_vector = 0;
+      clearInterval(this.track_timer);
+      this.track_time = 0;
     },
     carMove(evt) {
       if (this.car.hold) {
+
         let boundary = this.$refs.ref_map_container.getBoundingClientRect();
         let x = evt.x - boundary.left;
         let y = evt.y - boundary.top;
@@ -167,6 +194,7 @@ export default {
         this.car.y = y - (this.car_container.height / 2) + this.car.height;
         if (this.previous_x && this.previous_y) {
           this.calculateAngle(x - this.previous_x, y - this.previous_y);
+          this.calcuateVector(x - this.previous_x, y - this.previous_y);
         }
         this.previous_x = x;
         this.previous_y = y;
@@ -189,12 +217,17 @@ export default {
     },
 
     checkLights() {
+      let self = this;
       this.trafic_lights.forEach(el => {
         let hypot = Math.hypot((this.car.x - this.car.width/2) - (el.x - el.width/2), (this.car.y - this.car.height / 2) - (el.y - el.height/2));
         //this.showConsole && console.log("Hypot", hypot);
         if (hypot < el.radius/2) {
           this.showConsole && console.log("Попали на светофор");
           el.state = "green";
+          clearTimeout(el.red_timer);
+          clearTimeout(el.yellow_timer);
+          clearTimeout(el.green_timer);
+          el.green_interval = setTimeout(self.changeLight, 3000, el, "green")
         }
       })
     },
