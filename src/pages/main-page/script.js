@@ -181,8 +181,8 @@ export default {
       let boundary = this.$refs.ref_map_container.getBoundingClientRect();
       let x = evt.x - boundary.left;
       let y = evt.y - boundary.top;
-      console.log("X", x);
-      console.log("Y", y);
+      this.showConsole && console.log("X", x);
+      this.showConsole && console.log("Y", y);
     },
 
     getLightState(state) {
