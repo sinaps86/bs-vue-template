@@ -54,7 +54,7 @@ export default {
   methods: {
 
     getMarkers() {
-      axios.get('http://192.168.88.229:8000/api/area/micro_area/')
+      axios.get('http://attrax.digital:8093/api/area/micro_area/')
         .then(
           response => {
             console.log(response.data);
