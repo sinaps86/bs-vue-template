@@ -20,31 +20,31 @@ export default {
       previous_y: null,
       trafic_lights: [
         {x: 456, y: 397, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 5000,
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 510, y: 216, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 3000, yellow_interval: 500, red_interval: 6000,
+          green_interval: 18000, yellow_interval: 2000, red_interval: 18000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 529, y: 202, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 5000, yellow_interval: 500, red_interval: 5000,
+        {x: 529, y: 202, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 18000, yellow_interval: 2000, red_interval: 18000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 753, y: 398, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 3000, yellow_interval: 500, red_interval: 4000,
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 606, y: 399, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 4000, yellow_interval: 500, red_interval: 3000,
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 637, y: 384, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 5000,
+        {x: 637, y: 384, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 722, y: 498, width: 10, height: 20, radius: 70, state: "red",
           green_interval: 2000, yellow_interval: 500, red_interval: 5000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 807, y: 142, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 1000, yellow_interval: 500, red_interval: 5000,
+        {x: 807, y: 142, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 798, y: 380, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 4000, yellow_interval: 500, red_interval: 3000,
+        {x: 798, y: 380, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 776, y: 567, width: 10, height: 20, radius: 70, state: "red",
           green_interval: 3000, yellow_interval: 500, red_interval: 4000,
@@ -55,41 +55,41 @@ export default {
         {x: 808, y: 582, width: 10, height: 20, radius: 70, state: "red",
           green_interval: 2000, yellow_interval: 500, red_interval: 5000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 862, y: 23, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 5000,
+        {x: 862, y: 23, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 888, y: 384, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 3000, yellow_interval: 500, red_interval: 4000,
+          green_interval: 10000, yellow_interval: 2000, red_interval: 10000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 866, y: 517, width: 10, height: 20, radius: 70, state: "red",
           green_interval: 2000, yellow_interval: 500, red_interval: 5000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 573, y: 396, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 4000, yellow_interval: 500, red_interval: 5000,
+        {x: 573, y: 396, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 988, y: 387, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 5000,
+        {x: 988, y: 387, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 7000, yellow_interval: 1000, red_interval: 7000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 988, y: 386, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 4000, yellow_interval: 500, red_interval: 4000,
+        {x: 988, y: 386, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 10000, yellow_interval: 1000, red_interval: 10000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 1003, y: 334, width: 10, height: 20, radius: 70, state: "red",
           green_interval: 2000, yellow_interval: 500, red_interval: 7000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 1076, y: 274, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 6000,
+        {x: 1076, y: 274, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 952, y: 606, width: 10, height: 20, radius: 70, state: "red",
           green_interval: 2000, yellow_interval: 500, red_interval: 5000,
           red_timer: "", yellow_timer: "", green_timer: ""},
-        {x: 974, y: 68, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 5000,
+        {x: 974, y: 68, width: 10, height: 20, radius: 70, state: "green",
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 875, y: 62, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 2000, yellow_interval: 500, red_interval: 5000,
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 1169, y: 351, width: 10, height: 20, radius: 70, state: "red",
-          green_interval: 3000, yellow_interval: 500, red_interval: 4000,
+          green_interval: 9000, yellow_interval: 2000, red_interval: 9000,
           red_timer: "", yellow_timer: "", green_timer: ""},
         {x: 1180, y: 258, width: 10, height: 20, radius: 70, state: "red",
           green_interval: 2000, yellow_interval: 500, red_interval: 5000,
@@ -112,7 +112,18 @@ export default {
     initialLights() {
       let self = this;
       this.trafic_lights.forEach(el => {
-        el.red_timer = setTimeout(self.changeLight, el.red_interval, el, "red");
+        switch (el.state) {
+          case "red":
+            el.red_timer = setTimeout(self.changeLight, el.red_interval, el, "red");
+            break;
+          case "yellow":
+            el.red_timer = setTimeout(self.changeLight, el.yellow_interval, el, "yellow");
+            break;
+          case "green":
+            el.red_timer = setTimeout(self.changeLight, el.green_interval, el, "green");
+            break;
+        }
+
         //el.yellow_timer = setTimeout(self.changeLight, el.yellow_interval, el, "yellow");
         //el.green_timer = setTimeout(self.changeLight, el.green_interval, el, "green");
       });
@@ -143,8 +154,12 @@ export default {
           light.green_timer = setTimeout(self.changeLight, light.green_interval, light, "green");
           break;
         case "green":
+          light.state = "second_yellow";
+          light.red_timer = setTimeout(self.changeLight, light.yellow_interval, light, "second_yellow");
+          break;
+        case "second_yellow":
           light.state = "red";
-          light.red_timer = setTimeout(self.changeLight, light.red_interval, light, "red");
+          light.green_timer = setTimeout(self.changeLight, light.green_interval, light, "red");
           break;
       }
     },
@@ -163,6 +178,8 @@ export default {
         case "green":
           return `url("${require("../../assets/images/traffic-light-green.svg")}")`;
         case "yellow":
+          return `url("${require("../../assets/images/traffic-light-yellow.svg")}")`;
+        case "second_yellow":
           return `url("${require("../../assets/images/traffic-light-yellow.svg")}")`;
       }
     },
@@ -227,7 +244,7 @@ export default {
           clearTimeout(el.red_timer);
           clearTimeout(el.yellow_timer);
           clearTimeout(el.green_timer);
-          el.green_interval = setTimeout(self.changeLight, 3000, el, "green")
+          el.green_timer = setTimeout(self.changeLight, 3000, el, "green");
         }
       })
     },
