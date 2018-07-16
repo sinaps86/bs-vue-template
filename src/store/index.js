@@ -6,10 +6,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    test: "Hello Vuex"
+    test: "Hello Vuex",
+    height: null
   },
   mutations: {
-
+    setHeight(state, height) {
+      state.height = height;
+    }
   },
   actions: {
 
