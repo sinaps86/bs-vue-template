@@ -1,0 +1,39 @@
+.app-page
+  #app
+    router-view
+    .preloader(v-if="show_preloader")
+      .spinner
+        .dot1
+        .dot2
+    b-modal(
+    ref="ref_m_app_info"
+    :title="modals.info.title"
+    ok-only
+    ok-variant="info"
+    header-bg-variant="info"
+    header-text-variant="white"
+    )
+      p {{modals.info.message}}
+    b-modal(
+    ref="ref_m_app_warning"
+    :title="modals.warning.title"
+    ok-only
+    ok-variant="warning"
+    header-bg-variant="warning"
+    header-text-variant="white"
+    )
+      p {{modals.warning.message}}
+    b-modal(
+    ref="ref_m_app_error"
+    :title="modals.error.title"
+    ok-only
+    ok-variant="danger"
+    header-bg-variant="danger"
+    header-text-variant="white"
+    )
+      p {{modals.error.message}}
+
+
+
+
+
