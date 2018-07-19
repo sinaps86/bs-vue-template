@@ -1,0 +1,19 @@
+.new-component
+  googlemaps-map(
+  :center="{lat: 53.7557000, lng: 87.1099000}"
+  :zoom="15"
+  v-bind:style="{ width: getMapSize.mWidth + 'px', height: getMapSize.mHeight + 'px'}"
+  )
+    googlemaps-marker(
+      ref="marker"
+      :key="index"
+      v-for="(m, index) in markers"
+      :position="m.position"
+      :clickable="true"
+      :draggable="false"
+      v-bind:icon="m.markerStatus === 3 ? red : m.markerStatus === 2 ? orange : m.markerStatus === 1 ? yellow : false"
+      v-bind:title="m.title"
+      v-on:click="openWindow1(m, index)"
+      )
+
+
